@@ -9,5 +9,6 @@
   "migrations": ["./dist/shared/typeorm/migrations/*.js"],
   "cli": {
     "migrationsDir": "./dist/shared/typeorm/migrations"
-  }
+  },
+  "synchronize": true
 }

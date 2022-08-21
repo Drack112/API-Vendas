@@ -1,11 +1,11 @@
 import "reflect-metadata";
+import "@shared/typeorm";
 
 import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 
 import routes from "./routes";
 import AppError from "@shared/errors/AppError";
-import "@shared/typeorm";
 
 const app = express();
 
@@ -15,12 +15,7 @@ app.use(express.json());
 app.use(routes);
 
 app.use(
-  (
-    error: Error,
-    request: Request,
-    response: Response,
-    nextFunction: NextFunction,
-  ) => {
+  (error: Error, request: Request, response: Response, next: NextFunction) => {
     if (error instanceof AppError) {
       return response.status(error.statusCode).json({
         status: "error",
@@ -28,9 +23,11 @@ app.use(
       });
     }
 
+    console.log(error);
+
     return response.status(500).json({
       status: "error",
-      message: "Internal server error!",
+      message: "Internal server error",
     });
   },
 );

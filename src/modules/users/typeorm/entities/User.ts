@@ -5,7 +5,6 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-
 import { Exclude, Expose } from "class-transformer";
 
 @Entity("users")
@@ -23,9 +22,7 @@ class User {
   @Exclude()
   password: string;
 
-  @Column({
-    nullable: true,
-  })
+  @Column()
   avatar: string;
 
   @CreateDateColumn()
@@ -40,7 +37,7 @@ class User {
       return null;
     }
 
-    return `http://localhost:3000/files/${this.avatar}`;
+    return `${process.env.APP_API_URL}/files/${this.avatar}`;
   }
 }
 

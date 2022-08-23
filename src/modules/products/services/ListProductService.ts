@@ -1,12 +1,25 @@
-import Product from "../typeorm/entities/product";
-
 import { getCustomRepository } from "typeorm";
-import { ProductRepository } from "../typeorm/repositories/ProductRepository";
+
+import Product from "../typeorm/entities/Product";
+import ProductRepository from "../typeorm/repositories/ProductsRepository";
+
+import redisCache from "@shared/cache/RedisCache";
 
 class ListProductService {
   public async execute(): Promise<Product[]> {
     const productsRepository = getCustomRepository(ProductRepository);
-    const products = await productsRepository.find();
+
+    // const redisCache = new RedisCache();
+
+    let products = await redisCache.recover<Product[]>(
+      "api-vendas-PRODUCT_LIST",
+    );
+
+    if (!products) {
+      products = await productsRepository.find();
+
+      await redisCache.save("api-vendas-PRODUCT_LIST", products);
+    }
 
     return products;
   }

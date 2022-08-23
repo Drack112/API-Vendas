@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import ResetPasswordService from "../services/ResetPasswordService";
 
 export default class ResetPasswordController {
@@ -12,6 +13,6 @@ export default class ResetPasswordController {
       token,
     });
 
-    return response.status(204).json([]);
+    return response.status(204).json();
   }
 }

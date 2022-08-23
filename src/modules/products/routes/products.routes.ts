@@ -1,7 +1,8 @@
 import { Router } from "express";
-import { celebrate, Joi, Segments } from "celebrate";
 
 import ProductsController from "../controllers/ProductsController";
+
+import { celebrate, Joi, Segments } from "celebrate";
 
 const productsRouter = Router();
 const productsController = new ProductsController();
@@ -33,13 +34,13 @@ productsRouter.post(
 productsRouter.put(
   "/:id",
   celebrate({
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      price: Joi.number().precision(2).required(),
+      quantity: Joi.number().required(),
+    },
     [Segments.PARAMS]: {
       id: Joi.string().uuid().required(),
-    },
-    [Segments.BODY]: {
-      name: Joi.string(),
-      price: Joi.number().precision(2),
-      quantity: Joi.number(),
     },
   }),
   productsController.update,

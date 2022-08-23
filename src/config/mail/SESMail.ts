@@ -1,5 +1,4 @@
 import nodemailer from "nodemailer";
-
 import aws from "aws-sdk";
 
 import HandlebarsMailTemplate from "./HandlebarsMailTemplate";

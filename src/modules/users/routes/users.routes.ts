@@ -1,19 +1,18 @@
 import { Router } from "express";
 import { celebrate, Joi, Segments } from "celebrate";
-
 import multer from "multer";
 import uploadConfig from "@config/upload";
 
-import UserController from "../controllers/UserController";
+import UsersController from "../controllers/UsersController";
 import UserAvatarController from "../controllers/UserAvatarController";
 
-import isAuthenticated from "../middlewares/isAuthenticated";
+import isAuthenticated from "@shared/http/middlewares/isAuthenticated";
 
 const usersRouter = Router();
-const usersController = new UserController();
+const usersController = new UsersController();
 const usersAvatarController = new UserAvatarController();
 
-const upload = multer(uploadConfig);
+const upload = multer(uploadConfig.multer);
 
 usersRouter.get("/", isAuthenticated, usersController.index);
 

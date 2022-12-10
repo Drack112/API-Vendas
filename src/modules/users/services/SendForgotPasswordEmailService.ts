@@ -1,13 +1,13 @@
-import AppError from "@shared/errors/AppError";
+import AppError from "@/shared/errors/AppError";
 import { getCustomRepository } from "typeorm";
 import path from "path";
 
-import UsersRepository from "../typeorm/repositories/UsersRepository";
-import UserTokensRepository from "../typeorm/repositories/UserTokensRepository";
+import UsersRepository from "@/modules/users/infra/typeorm/repositories/UsersRepository";
+import UserTokensRepository from "@/modules/users/infra/typeorm/repositories/UserTokensRepository";
 
-import EtherealMail from "@config/mail/EtherealMail";
-import SESMail from "@config/mail/SESMail";
-import mailConfig from "@config/mail/mail";
+import EtherealMail from "@/config/mail/EtherealMail";
+import SESMail from "@/config/mail/SESMail";
+import mailConfig from "@/config/mail/mail";
 
 interface IRequest {
   email: string;

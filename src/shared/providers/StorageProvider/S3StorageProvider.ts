@@ -3,7 +3,7 @@ import path from "path";
 import aws, { S3 } from "aws-sdk";
 import mime from "mime";
 
-import uploadConfig from "@config/upload";
+import uploadConfig from "@/config/upload";
 
 export default class S3StorageProvider {
   private client: S3;

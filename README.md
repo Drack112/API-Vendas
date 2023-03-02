@@ -37,13 +37,15 @@ Esse projeto apenas serve para eu aprofundar alguns conceitos de Solid com aplic
 
 - [NodeJS](https://nodejs.org/en/)
 - [Docker](https://www.docker.com/)
+- [Aws](https://aws.amazon.com/pt/) -> serviço s3
+- [Ethereal](https://ethereal.email/) -> recomendado, mas pode usar o serviço de email ses também
 
 ## 📂 UM comando só:
 
 
 ## ☕ Pequena ajuda
 
-Preencha o arquivo `.env.example`, localizado em `./ediaristas`, com as informações cobradas e depois renomeie para `.env`.
+Preencha o arquivo `.env.example` com as informações cobradas e depois renomeie para `.env`.
 
 ```env
 # PG Database
@@ -76,14 +78,13 @@ AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 ```
 
-
-Você não precisa configurar os arquivos `.env`, mas sinta-se livre se quiser mudar alguma variável de ambiente.
-
 🐬 Comando:
 
 ```bash
 docker-compose up --build -V
 ```
+
+Agora você pode acessar a API com a host [http://localhost:3333](http://localhost:3333)
 
 <a id="-como-contribuir"></a>
 
